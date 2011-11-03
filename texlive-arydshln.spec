@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/arydshln
+# catalog-date 2007-04-06 18:29:05 +0200
+# catalog-license lppl
+# catalog-version 1.71
 Name:		texlive-arydshln
 Version:	1.71
 Release:	1
@@ -49,6 +55,7 @@ The package is compatible with array and colortab.
 #- source
 %doc %{_texmfdistdir}/source/latex/arydshln/arydshln.dtx
 %doc %{_texmfdistdir}/source/latex/arydshln/arydshln.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -59,3 +66,5 @@ The package is compatible with array and colortab.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
