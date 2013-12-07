@@ -6,7 +6,7 @@
 # catalog-version 1.71
 Name:		texlive-arydshln
 Version:	1.71
-Release:	2
+Release:	3
 Summary:	Horizontal and vertical dashed lines in arrays and tabulars
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/arydshln
