@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /macros/latex/contrib/arydshln
-# catalog-date 2007-04-06 18:29:05 +0200
-# catalog-license lppl
-# catalog-version 1.71
 Name:		texlive-arydshln
-Version:	1.76
+Version:	50084
 Release:	1
 Summary:	Horizontal and vertical dashed lines in arrays and tabulars
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/arydshln
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.r50084.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.doc.r50084.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.source.r50084.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -28,12 +22,12 @@ be controlled through style parameters or optional arguments.
 The package is compatible with array and colortab.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -48,25 +42,11 @@ The package is compatible with array and colortab.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.71-2
-+ Revision: 749350
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.71-1
-+ Revision: 717857
-- texlive-arydshln
-- texlive-arydshln
-- texlive-arydshln
-- texlive-arydshln
-- texlive-arydshln
-
