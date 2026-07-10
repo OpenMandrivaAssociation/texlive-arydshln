@@ -1,52 +1,28 @@
-Name:		texlive-arydshln
-Version:	50084
-Release:	2
-Summary:	Horizontal and vertical dashed lines in arrays and tabulars
+%global tl_name arydshln
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.76
+Release:	%{tl_revision}.1
+Summary:	Draw dash-lines in array/tabular
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/arydshln
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.source.r%{version}.tar.xz
+License:	lppl1
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/arydshln.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-Definitions of horizontal and vertical dashed lines for the
-array and tabular environment. Horizontal lines are drawn by
-\hdashline and \cdashline while vertical ones can be specified
-as a part of preamble using ':'. The shape of dashed lines may
-be controlled through style parameters or optional arguments.
-The package is compatible with array and colortab.
+The package is to draw dash-lines in array/tabular environments.
+Horizontal lines are drawn by \hdashline and \cdashline while vertical
+ones can be specified as a part of the preamble using ':'. The shape of
+dash-lines may be controlled through style parameters or optional
+arguments. The package is compatible with array, colortab, longtable,
+and colortbl.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/arydshln/arydshln.sty
-%doc %{_texmfdistdir}/doc/latex/arydshln/README
-%doc %{_texmfdistdir}/doc/latex/arydshln/arydshln-man.pdf
-%doc %{_texmfdistdir}/doc/latex/arydshln/arydshln-man.tex
-%doc %{_texmfdistdir}/doc/latex/arydshln/arydshln.pdf
-#- source
-%doc %{_texmfdistdir}/source/latex/arydshln/arydshln.dtx
-%doc %{_texmfdistdir}/source/latex/arydshln/arydshln.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
